@@ -1,6 +1,6 @@
 pragma solidity >=0.4.25 <0.8.0;
 
-contract CrowdFundingCampaignFactory {
+contract CrowdFundingCampaign {
 
     address[] public deployedCampaigns; // an address array of the deployed campaign.
 
@@ -43,7 +43,7 @@ contract CrowdfundingCampaign {
     function contibute() public payable { 
         require(msg.value>= minimumContribution); // to make sure that every amount people sent is greater than or equal to the minmum amount of the contribution. 
         contributors[msg.sender]=true; // to add the contributors addresses.
-        contributorsCount++; // to increase the contributors ؤount.
+        contributorsCount++; // to increase the contributors count.
 
 
     }
@@ -76,7 +76,7 @@ contract CrowdfundingCampaign {
         Withdrawal storage withdrawal = withdrawals[index]; // each withdrawal request will have an index that helps to locate the request.
         require(!withdrawal.approvals[msg.sender]); // to make sure that whoever sending the approval hasn't already approved it.
         withdrawal.approvals[msg.sender]==true;
-        withdrawal.approvalCount++; // increasing the approval count wehn "true".
+        withdrawal.approvalCount++; // increasing the approval count when "true".
         
     }
 // the following function is created to transfer and draw the fund.    
